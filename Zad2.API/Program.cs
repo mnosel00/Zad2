@@ -34,14 +34,13 @@ builder.Services.AddScoped<ITopPairsService, TopPairsService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Rick and Morty Aggregator API v1");
     });
-}
+
 
 app.UseHttpsRedirection();
 
