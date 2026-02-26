@@ -290,10 +290,25 @@ public class RickAndMortyHttpClient : IRickAndMortyClient
         }
 
         var uri = new Uri(url);
-        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
-        var pageValue = query["page"];
+        var query = uri.Query.TrimStart('?');
+        
+        if (string.IsNullOrEmpty(query))
+        {
+            return null;
+        }
 
-        return int.TryParse(pageValue, out var page) ? page : null;
+        foreach (var parameter in query.Split('&'))
+        {
+            var keyValue = parameter.Split('=', 2);
+            if (keyValue.Length == 2 && 
+                keyValue[0].Equals("page", StringComparison.OrdinalIgnoreCase) &&
+                int.TryParse(keyValue[1], out var page))
+            {
+                return page;
+            }
+        }
+
+        return null;
     }
 
     #endregion
