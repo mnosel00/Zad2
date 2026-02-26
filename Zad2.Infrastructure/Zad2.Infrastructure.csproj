@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Zad2.Core\Zad2.Core.csproj" />
+  </ItemGroup>
+
 </Project>

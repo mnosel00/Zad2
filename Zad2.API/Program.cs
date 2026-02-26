@@ -20,11 +20,12 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // Register HttpClient for Rick and Morty API
-builder.Services.AddHttpClient<IRickAndMortyClient, RickAndMortyHttpClient>(client =>
-{
-    client.BaseAddress = new Uri("https://rickandmortyapi.com/api/");
-    client.DefaultRequestHeaders.Add("Accept", "application/json");
-});
+builder.Services.AddHttpClient<IRickAndMortyClient, RickAndMortyHttpClient>()
+    .ConfigureHttpClient(client =>
+    {
+        client.BaseAddress = new Uri("https://rickandmortyapi.com/api/");
+        client.DefaultRequestHeaders.Add("Accept", "application/json");
+    });
 
 // Register Core services
 builder.Services.AddScoped<ISearchService, SearchService>();
