@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="Zad2/Zad2.csproj" />
+  <Project Path="Zad2.API/Zad2.API.csproj" />
+  <Project Path="Zad2.Core/Zad2.Core.csproj" />
+  <Project Path="Zad2.Infrastructure/Zad2.Infrastructure.csproj" />
+  <Project Path="Zad2.Tests/Zad2.Tests.csproj" />
 </Solution>
