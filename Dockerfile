@@ -5,14 +5,13 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy solution and project files first (layer caching optimization)
-COPY *.sln ./
 COPY Zad2.Core/*.csproj Zad2.Core/
 COPY Zad2.Infrastructure/*.csproj Zad2.Infrastructure/
 COPY Zad2.API/*.csproj Zad2.API/
 COPY Zad2.Tests/*.csproj Zad2.Tests/
 
 # Restore dependencies
-RUN dotnet restore
+RUN dotnet restore Zad2.API/Zad2.API.csproj
 
 # Copy the rest of the source code
 COPY . .
